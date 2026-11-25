@@ -2143,3 +2143,15 @@ body {
     font-size: 10.5px;
   }
 }
+@media (max-width: 350px) {
+  .result-title {
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+  .result-title-left {
+    flex-basis: 100%;
+  }
+  .result-title .toggle {
+    margin-left: 39px;
+  }
+}

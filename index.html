@@ -49,7 +49,9 @@
               <h1 id="page-title">Command generator</h1>
               <p>Pilih perintah dan sesuaikan detail repository.</p>
               <div class="hero-meta">
-                <span><span data-icon="terminal"></span> Bash &amp; CMD</span
+                <span
+                  ><span data-icon="terminal"></span> PowerShell, Bash &amp;
+                  CMD</span
                 ><span
                   ><span data-icon="shield"></span> Berjalan di browser</span
                 >
@@ -212,9 +214,15 @@
                     <h2>Perintah</h2>
                   </div>
                   <div class="toggle" role="group" aria-label="Jenis terminal">
-                    <button id="bash-btn" class="active" aria-pressed="true">
-                      Bash</button
-                    ><button id="cmd-btn" aria-pressed="false">CMD</button>
+                    <button
+                      id="powershell-btn"
+                      class="active"
+                      aria-pressed="true"
+                    >
+                      PowerShell
+                    </button>
+                    <button id="bash-btn" aria-pressed="false">Bash</button>
+                    <button id="cmd-btn" aria-pressed="false">CMD</button>
                   </div>
                 </div>
                 <div class="result-body">
@@ -228,7 +236,7 @@
                     <div class="term-head">
                       <span
                         ><i class="term-dot"></i
-                        ><span id="terminal-label">BASH / GIT BASH</span></span
+                        ><span id="terminal-label">POWERSHELL</span></span
                       ><span id="terminal-state">MENUNGGU INPUT</span>
                     </div>
                     <div

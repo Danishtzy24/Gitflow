@@ -26,6 +26,8 @@ npm run preview
 
 Build terlebih dahulu memeriksa tipe TypeScript, lalu menghasilkan aplikasi statis di `dist/`. Folder `dist/` yang disertakan dalam ZIP juga dapat langsung diunggah ke hosting statis. Sajikan melalui server web; jangan membuka HTML build dengan `file://` karena browser dapat memblokir modul JavaScript.
 
+PowerShell menggunakan pemeriksaan `$LASTEXITCODE`, kompatibel dengan Windows PowerShell 5.1 dan PowerShell 7. Format Bash dan CMD menggunakan `&&`; salin seluruh blok sekaligus dan jangan mencampur format terminal.
+
 Kedua halaman, `index.html` dan `docs.html`, ikut dibangun. `base: './'` di `vite.config.ts` mendukung hosting dalam subdirektori.
 
 ## Struktur

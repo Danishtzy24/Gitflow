@@ -123,19 +123,22 @@
                   <div class="step-number">03</div>
                   <b>Salin dan jalankan</b>
                   <p>
-                    Pilih Bash atau CMD, periksa hasilnya, lalu tempel semua
-                    baris di terminal.
+                    Pilih PowerShell, Bash, atau CMD sesuai terminal, periksa
+                    hasilnya, lalu tempel seluruh blok di terminal.
                   </p>
                 </div>
               </div>
               <div class="callout">
                 <span data-icon="info"></span>
                 <div>
-                  <strong>Tentang baris perintah</strong>Tanda
-                  <code class="code">&amp;&amp;</code> menghubungkan langkah dan
-                  menghentikan rangkaian jika langkah sebelumnya gagal. Pilih
-                  Bash untuk terminal Bash/Git Bash atau CMD untuk Windows
-                  Command Prompt. Jangan gunakan format CMD di PowerShell.
+                  <strong>Tentang baris perintah</strong> Pilih PowerShell untuk
+                  Windows PowerShell 5.1 atau PowerShell 7, Bash untuk Bash/Git
+                  Bash, atau CMD untuk Command Prompt. Format Bash dan CMD
+                  memakai <code class="code">&amp;&amp;</code>; format
+                  PowerShell menggunakan pemeriksaan
+                  <code class="code">$LASTEXITCODE</code> agar langkah
+                  berikutnya hanya berjalan jika langkah sebelumnya berhasil.
+                  Salin dan tempel seluruh blok, termasuk kurung kurawal.
                 </div>
               </div>
               <p>
@@ -538,9 +541,9 @@
               </div>
               <p>
                 Nama branch, pesan, dan path dibatasi agar aman dipakai dalam
-                format Bash dan CMD. Beberapa karakter yang sebenarnya sah di
-                Git sengaja tidak diterima. Nama commit dan file di dalam folder
-                tetap perlu diperiksa sendiri.
+                format PowerShell, Bash, dan CMD. Beberapa karakter yang
+                sebenarnya sah di Git sengaja tidak diterima. Nama commit dan
+                file di dalam folder tetap perlu diperiksa sendiri.
               </p>
             </div>
           </section>
@@ -554,6 +557,19 @@
             </div>
             <div class="section-body">
               <div class="faq">
+                <div class="faq-item">
+                  <h3>
+                    PowerShell menampilkan error “The token &amp;&amp; is not a
+                    valid statement separator”
+                  </h3>
+                  <p>
+                    Itu terjadi jika format Bash atau CMD dipakai di Windows
+                    PowerShell versi lama. Pilih PowerShell di generator, lalu
+                    salin seluruh blok baru. Jika push mengatakan HEAD tidak
+                    ditemukan, buat commit pertama setelah git init dan git add
+                    berhasil.
+                  </p>
+                </div>
                 <div class="faq-item">
                   <h3>Repository tidak ditemukan atau private</h3>
                   <p>

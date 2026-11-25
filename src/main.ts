@@ -23,7 +23,7 @@ type RepositoryStatus =
   | "unauthorized"
   | "restricted"
   | "unavailable";
-type Shell = "bash" | "cmd";
+type Shell = "powershell" | "bash" | "cmd";
 const paths: Record<string, string> = {
   github:
     '<path fill="currentColor" stroke="none" d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-1.89c-3.1.67-3.76-1.31-3.76-1.31-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15.99 1.7 2.6 1.21 3.24.93.1-.72.39-1.21.71-1.49-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.15a10.6 10.6 0 0 1 5.56 0c2.11-1.44 3.04-1.15 3.04-1.15.62 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3.01 0 4.29-2.61 5.23-5.1 5.5.4.35.76 1.02.76 2.06v2.87c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/>',
@@ -539,7 +539,7 @@ function input(id: string): HTMLInputElement {
 }
 let current = "launch";
 let category = "repository";
-let shell: Shell = "bash";
+let shell: Shell = "powershell";
 let repo: Repository | null = null;
 let repoCheck: RepositoryStatus = "empty";
 let defaultBranch = "main";
@@ -1003,9 +1003,31 @@ function render(animate = false) {
         : "Periksa detail sebelum menyalin.";
   const ready = (!a.repo || !!repo) && !errors.length;
   const lines = ready ? getLines() : [];
-  const cont = shell === "bash" ? " \\" : " ^";
-  commands = lines
-    .map((l, i) => l + (i < lines.length - 1 ? " &&" + cont : ""))
+  // PowerShell 5.1 does not support &&. Nest checks of the native Git exit
+  // code so later steps cannot run after a failed earlier step.
+  const displayLines: Array<{ text: string; continuation?: string }> = [];
+  if (shell === "powershell") {
+    if (lines.length) displayLines.push({ text: lines[0] });
+    for (let i = 1; i < lines.length; i++) {
+      displayLines.push({
+        text: `${"  ".repeat(i - 1)}if ($LASTEXITCODE -eq 0) {`,
+      });
+      displayLines.push({ text: `${"  ".repeat(i)}${lines[i]}` });
+    }
+    for (let i = lines.length - 2; i >= 0; i--) {
+      displayLines.push({ text: `${"  ".repeat(i)}}` });
+    }
+  } else {
+    const cont = shell === "bash" ? " \\" : " ^";
+    lines.forEach((line, i) =>
+      displayLines.push({
+        text: line,
+        continuation: i < lines.length - 1 ? " &&" + cont : "",
+      }),
+    );
+  }
+  commands = displayLines
+    .map((line) => line.text + (line.continuation ?? ""))
     .join("\n");
   $("terminal").classList.toggle("is-transitioning", animate);
   $("terminal").innerHTML = "";
@@ -1020,7 +1042,7 @@ function render(animate = false) {
     el.appendChild(label);
     $("terminal").appendChild(el);
   } else
-    lines.forEach((line, i) => {
+    displayLines.forEach((line, i) => {
       const row = document.createElement("div");
       row.className = "command-line";
       row.style.animationDelay = Math.min(i * 25, 120) + "ms";
@@ -1029,11 +1051,11 @@ function render(animate = false) {
       n.textContent = String(i + 1).padStart(2, "0");
       const code = document.createElement("span");
       code.className = "code";
-      code.textContent = line;
-      if (i < lines.length - 1) {
+      code.textContent = line.text;
+      if (line.continuation) {
         const c = document.createElement("span");
         c.className = "continuation";
-        c.textContent = " &&" + cont;
+        c.textContent = line.continuation;
         code.appendChild(c);
       }
       row.append(n, code);
@@ -1044,7 +1066,11 @@ function render(animate = false) {
     ? "SIAP DISALIN"
     : "MENUNGGU INPUT";
   $("terminal-label").textContent =
-    shell === "bash" ? "BASH / GIT BASH" : "WINDOWS CMD";
+    shell === "bash"
+      ? "BASH / GIT BASH"
+      : shell === "cmd"
+        ? "WINDOWS CMD"
+        : "POWERSHELL";
   $("warning").classList.toggle("show", !!a.warning);
   $("warning-title").textContent = a.title;
   $("warning-text").textContent = a.warning || "";
@@ -1060,7 +1086,9 @@ function render(animate = false) {
   $("result-note").textContent = lines.length
     ? a.note +
       (lines.length > 1
-        ? " Salin semua baris sekaligus; && menghentikan urutan jika langkah gagal."
+        ? shell === "powershell"
+          ? " Salin seluruh blok; langkah berikutnya hanya berjalan jika perintah sebelumnya berhasil."
+          : " Salin semua baris sekaligus; && menghentikan urutan jika langkah gagal."
         : "")
     : "Lengkapi input yang diperlukan.";
   statusView();
@@ -1113,12 +1141,13 @@ $("check-private").onclick = () => {
 };
 function setShell(s: Shell) {
   shell = s;
-  ["bash", "cmd"].forEach((n) => {
+  ["powershell", "bash", "cmd"].forEach((n) => {
     $(n + "-btn").classList.toggle("active", s === n);
     $(n + "-btn").setAttribute("aria-pressed", String(s === n));
   });
   render(true);
 }
+$("powershell-btn").onclick = () => setShell("powershell");
 $("bash-btn").onclick = () => setShell("bash");
 $("cmd-btn").onclick = () => setShell("cmd");
 $("copy").onclick = async () => {
