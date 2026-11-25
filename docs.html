@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f5f7fa" />
+    <title>Dokumentasi — Gitflow</title>
+    <link rel="stylesheet" href="/src/docs.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="top-inner">
+        <div class="mark">
+          <svg
+            width="23"
+            height="23"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-1.89c-3.1.67-3.76-1.31-3.76-1.31-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15.99 1.7 2.6 1.21 3.24.93.1-.72.39-1.21.71-1.49-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.15a10.6 10.6 0 0 1 5.56 0c2.11-1.44 3.04-1.15 3.04-1.15.62 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3.01 0 4.29-2.61 5.23-5.1 5.5.4.35.76 1.02.76 2.06v2.87c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"
+            />
+          </svg>
+        </div>
+        <span class="brand">Gitflow</span><span class="divider"></span
+        ><span class="top-title">Dokumentasi</span
+        ><a class="back" href="index.html"
+          ><span data-icon="arrow"></span> Kembali ke generator</a
+        >
+      </div>
+    </header>
+    <main class="wrap">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">
+            <span data-icon="book"></span> GITFLOW / DOKUMENTASI
+          </div>
+          <h1>Dokumentasi</h1>
+          <p>Panduan penggunaan dan referensi perintah Gitflow.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit"></div>
+          <div class="orbit two"></div>
+          <div class="doc-graphic">
+            <div class="graphic-top">
+              <span data-icon="book"></span> GITFLOW
+            </div>
+            <div class="graphic-line"></div>
+            <div class="graphic-line"></div>
+            <div class="graphic-line"></div>
+            <div class="graphic-bottom">Documentation</div>
+          </div>
+        </div>
+      </section>
+      <div class="content">
+        <aside class="toc">
+          <div class="toc-label">DI HALAMAN INI</div>
+          <nav id="toc" aria-label="Navigasi dokumentasi">
+            <a href="#mulai" class="active"
+              ><span data-icon="start"></span> Mulai</a
+            ><a href="#repository"><span data-icon="repo"></span> Repository</a
+            ><a href="#branch"><span data-icon="branch"></span> Branch</a
+            ><a href="#pemulihan"><span data-icon="restore"></span> Pemulihan</a
+            ><a href="#lanjutan"><span data-icon="code"></span> Git lanjutan</a
+            ><a href="#private"
+              ><span data-icon="lock"></span> Repository private</a
+            ><a href="#keamanan"><span data-icon="shield"></span> Keamanan</a
+            ><a href="#masalah"><span data-icon="help"></span> Masalah umum</a>
+          </nav>
+          <div class="toc-note">
+            Panduan ini menjelaskan fitur Gitflow. Periksa hasil sebelum
+            menjalankan perintah.
+          </div>
+        </aside>
+        <div class="article">
+          <div class="intro-line">
+            <div>
+              <h2>Panduan penggunaan</h2>
+              <p>Pilih topik atau cari istilah di halaman ini.</p>
+            </div>
+            <div class="search">
+              <span data-icon="search"></span
+              ><input
+                id="search"
+                type="search"
+                placeholder="Cari topik..."
+                aria-label="Cari topik dokumentasi"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div id="no-results" class="notice" role="status">
+            Tidak ada topik yang cocok. Coba kata kunci lain.
+          </div>
+          <section class="section" id="mulai">
+            <div class="section-head">
+              <div class="section-icon" data-icon="start"></div>
+              <div>
+                <h2>Mulai menggunakan Gitflow</h2>
+                <p>Persiapan dan cara membuat perintah</p>
+              </div>
+            </div>
+            <div class="section-body">
+              <div class="steps">
+                <div class="step">
+                  <div class="step-number">01</div>
+                  <b>Pasang Git</b>
+                  <p>
+                    Pastikan Git tersedia di komputer dengan menjalankan
+                    <code class="code">git --version</code>.
+                  </p>
+                </div>
+                <div class="step">
+                  <div class="step-number">02</div>
+                  <b>Pilih perintah</b>
+                  <p>
+                    Tempel link GitHub jika diperlukan, lalu pilih kategori dan
+                    tindakan.
+                  </p>
+                </div>
+                <div class="step">
+                  <div class="step-number">03</div>
+                  <b>Salin dan jalankan</b>
+                  <p>
+                    Pilih Bash atau CMD, periksa hasilnya, lalu tempel semua
+                    baris di terminal.
+                  </p>
+                </div>
+              </div>
+              <div class="callout">
+                <span data-icon="info"></span>
+                <div>
+                  <strong>Tentang baris perintah</strong>Tanda
+                  <code class="code">&amp;&amp;</code> menghubungkan langkah dan
+                  menghentikan rangkaian jika langkah sebelumnya gagal. Pilih
+                  Bash untuk terminal Bash/Git Bash atau CMD untuk Windows
+                  Command Prompt. Jangan gunakan format CMD di PowerShell.
+                </div>
+              </div>
+              <p>
+                URL yang didukung:
+                <code class="code">https://github.com/pemilik/repo</code> dan
+                <code class="code">git@github.com:pemilik/repo.git</code>. Link
+                ke file atau halaman branch tidak didukung. Perintah lokal
+                seperti status tidak membutuhkan link.
+              </p>
+              <p>
+                Branch mengikuti branch default dari GitHub jika pemeriksaan
+                berhasil; jika tidak, nilainya <code class="code">main</code>.
+                Isi kolom branch secara manual jika berbeda. Perintah yang
+                memakai URL langsung tidak mengatur remote
+                <code class="code">origin</code> atau upstream otomatis.
+              </p>
+            </div>
+          </section>
+          <section class="section" id="repository">
+            <div class="section-head">
+              <div class="section-icon" data-icon="repo"></div>
+              <div>
+                <h2>Repository</h2>
+                <p>Upload, update, dan sinkronisasi</p>
+              </div>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Perintah</th>
+                      <th>Fungsi</th>
+                      <th>Perlu link</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Upload pertama</td>
+                      <td>
+                        Inisialisasi Git, stage, commit, lalu push ke branch
+                        tujuan. Gunakan repository GitHub kosong.
+                      </td>
+                      <td><span class="tag">Ya</span></td>
+                    </tr>
+                    <tr>
+                      <td>Update project</td>
+                      <td>
+                        Stage semua perubahan, commit, lalu push ke branch
+                        tujuan.
+                      </td>
+                      <td><span class="tag">Ya</span></td>
+                    </tr>
+                    <tr>
+                      <td>Clone repository</td>
+                      <td>Unduh repository dan masuk ke folder hasil clone.</td>
+                      <td><span class="tag">Ya</span></td>
+                    </tr>
+                    <tr>
+                      <td>Pull perubahan</td>
+                      <td>
+                        Ambil dan gabungkan branch GitHub ke branch lokal yang
+                        aktif.
+                      </td>
+                      <td><span class="tag">Ya</span></td>
+                    </tr>
+                    <tr>
+                      <td>Cek status</td>
+                      <td>Lihat branch aktif dan perubahan file lokal.</td>
+                      <td><span class="tag">Tidak</span></td>
+                    </tr>
+                    <tr>
+                      <td>Ganti isi branch</td>
+                      <td>
+                        Commit isi project lokal lalu force push untuk menimpa
+                        branch tujuan.
+                      </td>
+                      <td><span class="tag warn">Risiko tinggi</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout warn">
+                <span data-icon="alert"></span>
+                <div>
+                  <strong>Sebelum mengganti isi branch</strong>Cadangkan
+                  repository. Force push menimpa isi dan riwayat branch tujuan
+                  di GitHub. Gunakan folder project baru, periksa file dan
+                  <code class="code">.gitignore</code>, lalu pastikan URL dan
+                  branch benar. Branch lain tidak diubah.
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="section" id="branch">
+            <div class="section-head">
+              <div class="section-icon" data-icon="branch"></div>
+              <div>
+                <h2>Branch</h2>
+                <p>Kelola cabang lokal dan remote</p>
+              </div>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Perintah</th>
+                      <th>Fungsi</th>
+                      <th>Catatan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Daftar branch</td>
+                      <td>Tampilkan branch lokal dan branch yang aktif.</td>
+                      <td><span class="tag">Lokal</span></td>
+                    </tr>
+                    <tr>
+                      <td>Buat branch</td>
+                      <td>
+                        Buat branch dari posisi saat ini lalu langsung pindah.
+                      </td>
+                      <td><span class="tag">Lokal</span></td>
+                    </tr>
+                    <tr>
+                      <td>Pindah branch</td>
+                      <td>Pindah ke branch lokal yang sudah ada.</td>
+                      <td><span class="tag">Lokal</span></td>
+                    </tr>
+                    <tr>
+                      <td>Gabungkan branch</td>
+                      <td>
+                        Pindah ke branch tujuan, lalu merge branch sumber.
+                      </td>
+                      <td><span class="tag warn">Potensi konflik</span></td>
+                    </tr>
+                    <tr>
+                      <td>Hapus branch lokal</td>
+                      <td>
+                        Hapus branch lokal dengan <code class="code">-d</code>;
+                        Git akan menolak jika belum digabung.
+                      </td>
+                      <td><span class="tag warn">Menghapus</span></td>
+                    </tr>
+                    <tr>
+                      <td>Hapus branch GitHub</td>
+                      <td>Hapus branch pada repository remote yang dipilih.</td>
+                      <td><span class="tag warn">Menghapus</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                Branch aktif tidak dapat dihapus secara lokal. Branch default
+                atau branch yang dilindungi dapat menolak penghapusan di GitHub.
+              </p>
+            </div>
+          </section>
+          <section class="section" id="pemulihan">
+            <div class="section-head">
+              <div class="section-icon" data-icon="restore"></div>
+              <div>
+                <h2>Pemulihan</h2>
+                <p>Stash, reset, konflik, dan remote</p>
+              </div>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Perintah</th>
+                      <th>Fungsi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Simpan sementara</td>
+                      <td>
+                        Stash perubahan tracked dan untracked; file yang
+                        diabaikan tidak disertakan. Perubahan yang disimpan
+                        sementara hilang dari working tree.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Pulihkan stash</td>
+                      <td>
+                        Terapkan stash terbaru dengan
+                        <code class="code">apply</code>; salinan stash tetap ada
+                        dan konflik mungkin terjadi.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Daftar stash</td>
+                      <td>Lihat semua stash lokal.</td>
+                    </tr>
+                    <tr>
+                      <td>Batalkan commit</td>
+                      <td>
+                        Reset soft ke commit sebelumnya; perubahan tetap staged.
+                        Hindari pada commit yang sudah dibagikan.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Reset ke GitHub</td>
+                      <td>
+                        Fetch branch lalu reset hard branch lokal aktif ke hasil
+                        fetch.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Periksa konflik</td>
+                      <td>
+                        Tampilkan file dengan konflik yang belum diselesaikan;
+                        tidak menyelesaikannya otomatis.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Ubah remote origin</td>
+                      <td>
+                        Ganti URL origin yang sudah ada. Jika origin belum ada,
+                        perintah akan gagal.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout warn">
+                <span data-icon="alert"></span>
+                <div>
+                  <strong>Reset hard bersifat merusak</strong>Perubahan pada
+                  file yang dilacak akan hilang. File untracked biasanya tetap
+                  ada, tetapi dapat terhapus jika menghalangi file yang harus
+                  ditulis. Cadangkan seluruh folder terlebih dahulu.
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="section" id="lanjutan">
+            <div class="section-head">
+              <div class="section-icon" data-icon="code"></div>
+              <div>
+                <h2>Git lanjutan</h2>
+                <p>Riwayat, diff, tag, dan konfigurasi</p>
+              </div>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Perintah</th>
+                      <th>Fungsi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Riwayat commit</td>
+                      <td>
+                        Tampilkan hingga 20 commit dalam bentuk graph ringkas.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Lihat perubahan</td>
+                      <td>Tampilkan diff perubahan yang belum di-stage.</td>
+                    </tr>
+                    <tr>
+                      <td>Lihat staged</td>
+                      <td>Tampilkan diff yang sudah masuk staging.</td>
+                    </tr>
+                    <tr>
+                      <td>Buat dan kirim tag</td>
+                      <td>
+                        Buat annotated tag pada commit aktif lalu kirim ke
+                        repository. Jika push gagal, tag lokal tetap ada.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Periksa .gitignore</td>
+                      <td>
+                        Cek apakah path relatif diabaikan dan tampilkan aturan
+                        yang cocok. Ini tidak mengubah file
+                        <code class="code">.gitignore</code>.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Identitas Git</td>
+                      <td>
+                        Atur nama dan email commit hanya untuk repository lokal
+                        ini.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                Jika Git membuka tampilan pager saat melihat riwayat atau diff,
+                tekan <code class="code">q</code> untuk keluar.
+              </p>
+            </div>
+          </section>
+          <section class="section" id="private">
+            <div class="section-head">
+              <div class="section-icon" data-icon="lock"></div>
+              <div>
+                <h2>Repository private</h2>
+                <p>Pemeriksaan akses dan autentikasi</p>
+              </div>
+            </div>
+            <div class="section-body">
+              <div class="mini-grid">
+                <div class="mini">
+                  <b>Tanpa token</b>
+                  <p>
+                    Gitflow memeriksa akses publik. Respons “tidak ditemukan”
+                    juga dapat berarti repository private; keduanya tidak dapat
+                    dibedakan tanpa akses.
+                  </p>
+                </div>
+                <div class="mini">
+                  <b>Dengan token opsional</b>
+                  <p>
+                    Buka Akses private, masukkan fine-grained token yang
+                    memiliki akses baca metadata ke repository, lalu pilih
+                    Periksa akses.
+                  </p>
+                </div>
+              </div>
+              <p>
+                Token hanya dikirim ke GitHub API saat kamu memilih
+                <strong>Periksa akses</strong>. Token tidak disimpan oleh
+                Gitflow dan tidak dimasukkan ke perintah. Menghapus token atau
+                menutup panel akan mengosongkannya.
+              </p>
+              <div class="callout">
+                <span data-icon="info"></span>
+                <div>
+                  <strong>Login di terminal tetap diperlukan</strong>Pemeriksaan
+                  di Gitflow tidak mengautentikasi Git. Untuk HTTPS, gunakan
+                  credential helper atau metode autentikasi GitHub yang sesuai;
+                  untuk SSH, siapkan SSH key. Jangan menempel token ke perintah
+                  atau membagikannya.
+                </div>
+              </div>
+              <p>
+                Batasi akses dan masa berlaku token. Gunakan hanya di perangkat
+                dan browser tepercaya.
+                <a
+                  href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Panduan token GitHub</a
+                >
+              </p>
+            </div>
+          </section>
+          <section class="section" id="keamanan">
+            <div class="section-head">
+              <div class="section-icon" data-icon="shield"></div>
+              <div>
+                <h2>Keamanan dan batasan</h2>
+                <p>Hal yang perlu diperiksa sebelum menjalankan perintah</p>
+              </div>
+            </div>
+            <div class="section-body">
+              <div class="mini-grid">
+                <div class="mini">
+                  <b>Periksa folder aktif</b>
+                  <p>
+                    Jalankan di folder yang diminta. Clone dilakukan dari folder
+                    tujuan; sebagian besar perintah lain dari dalam repository.
+                  </p>
+                </div>
+                <div class="mini">
+                  <b>Periksa isi commit</b>
+                  <p>
+                    <code class="code">git add -A</code> memilih semua perubahan
+                    yang tidak diabaikan. Periksa
+                    <code class="code">git status</code> dan jangan sertakan
+                    rahasia.
+                  </p>
+                </div>
+                <div class="mini">
+                  <b>Cadangkan sebelum tindakan berisiko</b>
+                  <p>
+                    Force push, reset, penghapusan branch, dan perubahan riwayat
+                    dapat menyebabkan kehilangan data atau memengaruhi rekan
+                    kerja.
+                  </p>
+                </div>
+                <div class="mini">
+                  <b>Ketahui batas pemeriksaan</b>
+                  <p>
+                    Gitflow membuat perintah, bukan menjalankannya. Status akses
+                    bisa gagal karena jaringan, batas API, izin token, atau
+                    repository tidak ditemukan.
+                  </p>
+                </div>
+              </div>
+              <p>
+                Nama branch, pesan, dan path dibatasi agar aman dipakai dalam
+                format Bash dan CMD. Beberapa karakter yang sebenarnya sah di
+                Git sengaja tidak diterima. Nama commit dan file di dalam folder
+                tetap perlu diperiksa sendiri.
+              </p>
+            </div>
+          </section>
+          <section class="section" id="masalah">
+            <div class="section-head">
+              <div class="section-icon" data-icon="help"></div>
+              <div>
+                <h2>Masalah umum</h2>
+                <p>Langkah singkat untuk menanganinya</p>
+              </div>
+            </div>
+            <div class="section-body">
+              <div class="faq">
+                <div class="faq-item">
+                  <h3>Repository tidak ditemukan atau private</h3>
+                  <p>
+                    Periksa pemilik dan nama repository. Jika private, cek
+                    dengan token yang memiliki akses. Status ini tidak berarti
+                    repository pasti private.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <h3>Push ditolak atau branch dilindungi</h3>
+                  <p>
+                    Periksa apakah branch remote lebih baru atau dilindungi.
+                    Ambil perubahan dan selesaikan konflik jika diperlukan;
+                    ikuti aturan repository. Jangan langsung force push.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <h3>Authentication failed</h3>
+                  <p>
+                    Pastikan akun, izin, dan autentikasi Git di terminal benar.
+                    Password akun GitHub tidak digunakan sebagai password Git
+                    melalui HTTPS.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <h3>Not a git repository</h3>
+                  <p>
+                    Pastikan terminal berada di dalam folder repository. Untuk
+                    project baru, gunakan Upload pertama.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <h3>Commit gagal karena identitas belum diatur</h3>
+                  <p>
+                    Pilih Identitas Git di kategori Git lanjutan dan isi nama
+                    serta email. Perintah tersebut mengatur identitas untuk
+                    repository saat ini.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <h3>Perintah tidak berhenti atau keluarannya kosong</h3>
+                  <p>
+                    Jika pager terbuka, tekan <code class="code">q</code>.
+                    Perintah diff atau check-ignore bisa tidak menampilkan apa
+                    pun jika tidak ada hasil yang cocok.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="bottom">
+            Gitflow adalah alat independen dan tidak berafiliasi dengan GitHub.
+          </div>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/src/docs.ts"></script>
+  </body>
+</html>

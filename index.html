@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#24292f" />
+    <title>Gitflow — Git command generator</title>
+    <link rel="stylesheet" href="/src/main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+    <header class="topbar">
+      <div class="top-inner">
+        <div class="gh-logo" data-icon="github"></div>
+        <div class="product-name">Gitflow</div>
+        <span class="top-sep"></span>
+        <div class="product-section">Command generator</div>
+        <div class="top-actions">
+          <div class="top-note">
+            <span data-icon="shield"></span> Data tidak disimpan
+          </div>
+          <a class="docs" href="docs.html"
+            >Dokumentasi <span data-icon="book"></span
+          ></a>
+        </div>
+      </div>
+    </header>
+    <div class="shell">
+      <aside class="sidebar">
+        <h2 class="side-title">Kategori</h2>
+        <nav
+          class="nav-list"
+          id="categories"
+          aria-label="Kategori perintah"
+        ></nav>
+        <div class="side-info">
+          <strong>Gitflow</strong>Generator perintah berjalan di browser.
+          Periksa kembali perintah sebelum menjalankannya.
+        </div>
+      </aside>
+      <main class="main" id="main-content">
+        <div class="page">
+          <section class="hero" aria-labelledby="page-title">
+            <div class="hero-content">
+              <div class="hero-kicker">
+                <span data-icon="github"></span
+                ><span>GITHUB / COMMAND GENERATOR</span>
+              </div>
+              <h1 id="page-title">Command generator</h1>
+              <p>Pilih perintah dan sesuaikan detail repository.</p>
+              <div class="hero-meta">
+                <span><span data-icon="terminal"></span> Bash &amp; CMD</span
+                ><span
+                  ><span data-icon="shield"></span> Berjalan di browser</span
+                >
+              </div>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <div class="art-ring ring-one"></div>
+              <div class="art-ring ring-two"></div>
+              <div class="art-window">
+                <div class="art-bar">
+                  <div class="art-dots"><i></i><i></i><i></i></div>
+                  <div class="art-bar-text">TERMINAL</div>
+                  <span data-icon="terminal"></span>
+                </div>
+                <div class="art-code">
+                  <div>
+                    <span>01</span><b>git</b><i class="art-code-line long"></i
+                    ><em></em>
+                  </div>
+                  <div>
+                    <span>02</span><b>git</b><i class="art-code-line short"></i
+                    ><em></em>
+                  </div>
+                  <div>
+                    <span>03</span><b>git</b><i class="art-code-line medium"></i
+                    ><em class="art-active"></em>
+                  </div>
+                </div>
+                <div class="art-bottom">
+                  <i></i><span>Git</span
+                  ><span class="art-branch" data-icon="branch"></span>
+                </div>
+              </div>
+              <div class="art-float"><span data-icon="branch"></span></div>
+            </div>
+          </section>
+          <div class="workspace-head">
+            <div>
+              <div class="workspace-eyebrow">WORKSPACE</div>
+              <h2>Perintah Git</h2>
+            </div>
+          </div>
+          <nav
+            class="mobile-categories"
+            id="mobile-categories"
+            aria-label="Kategori perintah"
+          ></nav>
+          <div class="content-grid">
+            <div class="column">
+              <section class="card">
+                <div class="card-title">
+                  <span class="title-icon" data-icon="repo"></span>
+                  <h2>Repository</h2>
+                  <span class="hint">HTTPS atau SSH</span>
+                </div>
+                <div class="card-body">
+                  <label class="field-label" for="repo-url"
+                    >Link repository
+                    <span>— tidak diperlukan untuk perintah lokal</span></label
+                  >
+                  <div class="repo-row">
+                    <div class="input-wrap">
+                      <span class="input-icon" data-icon="link"></span
+                      ><input
+                        id="repo-url"
+                        type="text"
+                        placeholder="https://github.com/username/repository"
+                        autocomplete="off"
+                        spellcheck="false"
+                        aria-describedby="repo-status"
+                      />
+                    </div>
+                    <button
+                      class="btn"
+                      id="access-toggle"
+                      aria-expanded="false"
+                      aria-controls="access-panel"
+                    >
+                      <span data-icon="key"></span> Akses private
+                    </button>
+                  </div>
+                  <div class="status" id="repo-status" role="status"></div>
+                  <div class="access-panel" id="access-panel" inert>
+                    <div class="access-head">
+                      <div>
+                        <strong>Periksa repository private</strong>
+                        <p>
+                          Gunakan fine-grained personal access token dengan
+                          akses baca ke repository.
+                        </p>
+                      </div>
+                      <button class="text-btn" id="clear-token">
+                        Hapus token
+                      </button>
+                    </div>
+                    <label class="field-label" for="token"
+                      >Personal access token</label
+                    >
+                    <div class="token-row">
+                      <input
+                        class="input"
+                        id="token"
+                        type="password"
+                        placeholder="Masukkan token GitHub"
+                        autocomplete="off"
+                        spellcheck="false"
+                      /><button class="btn" id="check-private">
+                        Periksa akses
+                      </button>
+                    </div>
+                    <p class="access-foot">
+                      Token hanya dikirim ke GitHub API saat kamu menekan
+                      “Periksa akses”, tidak disimpan, dan tidak masuk ke
+                      perintah. Autentikasi Git di terminal tetap diperlukan.
+                      <a
+                        href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Tentang token</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </section>
+              <section class="card">
+                <div class="card-title">
+                  <span class="title-icon" data-icon="grid"></span>
+                  <h2>Pilih perintah</h2>
+                  <span class="hint"
+                    >Pilih kategori untuk melihat perintah lain</span
+                  >
+                </div>
+                <div class="card-body">
+                  <div class="actions-head">
+                    <h3 id="action-heading">Repository</h3>
+                    <div class="search-wrap">
+                      <span data-icon="search"></span
+                      ><input
+                        class="input"
+                        id="search"
+                        type="search"
+                        placeholder="Cari perintah"
+                        aria-label="Cari perintah"
+                        autocomplete="off"
+                      />
+                    </div>
+                  </div>
+                  <div class="actions-grid" id="actions"></div>
+                  <div id="form-area">
+                    <div class="form-divider"></div>
+                    <div class="fields" id="fields"></div>
+                    <p class="helper" id="field-help"></p>
+                  </div>
+                </div>
+              </section>
+              <section class="card">
+                <div class="card-title result-title">
+                  <div class="result-title-left">
+                    <span class="title-icon" data-icon="terminal"></span>
+                    <h2>Perintah</h2>
+                  </div>
+                  <div class="toggle" role="group" aria-label="Jenis terminal">
+                    <button id="bash-btn" class="active" aria-pressed="true">
+                      Bash</button
+                    ><button id="cmd-btn" aria-pressed="false">CMD</button>
+                  </div>
+                </div>
+                <div class="result-body">
+                  <div class="warning" id="warning">
+                    <span data-icon="alert"></span>
+                    <div>
+                      <b id="warning-title"></b><span id="warning-text"></span>
+                    </div>
+                  </div>
+                  <div class="terminal">
+                    <div class="term-head">
+                      <span
+                        ><i class="term-dot"></i
+                        ><span id="terminal-label">BASH / GIT BASH</span></span
+                      ><span id="terminal-state">MENUNGGU INPUT</span>
+                    </div>
+                    <div
+                      class="terminal-body"
+                      id="terminal"
+                      aria-live="polite"
+                    ></div>
+                    <div class="terminal-hint">
+                      Geser untuk melihat baris yang panjang.
+                    </div>
+                    <div
+                      class="terminal-alert"
+                      id="terminal-alert"
+                      role="status"
+                    >
+                      <span data-icon="alert"></span
+                      ><span id="terminal-alert-text"></span>
+                    </div>
+                  </div>
+                  <div class="result-footer">
+                    <div class="result-note">
+                      <span data-icon="info"></span
+                      ><span id="result-note"></span>
+                    </div>
+                    <button class="btn btn-primary" id="copy" disabled>
+                      <span data-icon="copy"></span
+                      ><span id="copy-label" aria-live="polite"
+                        >Salin perintah</span
+                      >
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <aside class="column side-column">
+              <section class="card guide">
+                <div class="card-title">
+                  <span class="title-icon" data-icon="book"></span>
+                  <h2>Panduan</h2>
+                </div>
+                <div class="card-body" id="guide-content">
+                  <h3 id="guide-title"></h3>
+                  <p id="guide-desc"></p>
+                  <div class="steps" id="steps"></div>
+                </div>
+              </section>
+              <div class="tip">
+                <b><span data-icon="info"></span> Catatan</b
+                ><span id="tip-text"></span>
+              </div>
+              <section class="card terms">
+                <div class="card-title">
+                  <span class="title-icon" data-icon="code"></span>
+                  <h2>Istilah dasar</h2>
+                </div>
+                <div class="card-body">
+                  <div class="term">
+                    <code>commit</code><span>Simpan perubahan</span>
+                  </div>
+                  <div class="term">
+                    <code>push</code><span>Kirim ke GitHub</span>
+                  </div>
+                  <div class="term">
+                    <code>pull</code><span>Ambil perubahan</span>
+                  </div>
+                  <div class="term">
+                    <code>clone</code><span>Unduh repository</span>
+                  </div>
+                </div>
+              </section>
+            </aside>
+          </div>
+          <div class="bottom-note">
+            Gitflow adalah alat independen dan tidak berafiliasi dengan GitHub.
+          </div>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
